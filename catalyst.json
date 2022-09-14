@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "targets": [
+      "workpackage"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "workprogress",
+    "plugin": "zcatalyst-cli-plugin-react"
+  }
+}

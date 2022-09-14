@@ -1,0 +1,29 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "1733000000008001",
+      "name": "work-progress",
+      "domain": {
+        "id": "50010564402",
+        "name": "work-progress-60016567010.development"
+      },
+      "env": [
+        {
+          "idx": 1,
+          "id": "60016567010",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+	"name": "workpackage",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "arunkp.it20@bitsathy.ac.in",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}

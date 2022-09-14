@@ -1,0 +1,6 @@
+{
+  "name": "workprogress",
+  "version": "0.0.1",
+  "homepage": "/app/sginin",
+  "login_redirect": "/app/signin"
+}
