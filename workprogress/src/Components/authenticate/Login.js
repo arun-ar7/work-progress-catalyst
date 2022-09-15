@@ -127,15 +127,15 @@ const Login = () => {
   async function doPostRequest() {
     console.log("executing");
     let payload = {
+      firstname: f_name.current,
+      lastname: l_name.current,
       email: email.current,
       password: password.current,
-      lastname: l_name.current,
-      firstname: f_name.current,
     };
 
-    let res = await axios.post("/server/workpackage/adduser", payload);
+    let res = await axios.post("/server/workpackage/user/signup", payload);
 
-    let data = res.data;
+    let data = res;
     if (data != null) {
       setIsLoggedIn(true);
     }

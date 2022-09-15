@@ -4,6 +4,7 @@
 	"main": "index.js",
 	"author": "arunkp.it20@bitsathy.ac.in",
 	"dependencies": {
+		"joi": "^17.6.0",
 		"zcatalyst-sdk-node": "latest"
 	}
 }
