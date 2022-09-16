@@ -1,4 +1,3 @@
-import "./App.css";
 import AuthenticatePage from "./Pages/AuthenticatePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
