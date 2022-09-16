@@ -19,23 +19,34 @@ router.post("/", (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
   var app = catalyst.initialize(req);
   let userManagement = app.userManagement();
-  let registerPromise = userManagement.registerUser(signupConfig, {
-    first_name: req.body.firstname,
-    last_name: req.body.lastname,
-    email_id: req.body.email,
-    role_id: "1733000000008016",
-  }); //Pass the JSON configration to the method
-
-  registerPromise
-    .then((userDetails) => {
-      console.log("userDetails : ", userDetails);
-      //Returns a promise
-      res.send(userDetails);
-    })
-    .catch((err) => {
-      console.log("error : ", err);
-      res.send(err);
-    });
+  // // program for creating user
+  // let registerPromise = userManagement.registerUser(signupConfig, {
+  //   first_name: req.body.firstname,
+  //   last_name: req.body.lastname,
+  //   email_id: req.body.email,
+  //   role_id: "1733000000008016",
+  // }); //Pass the JSON configration to the method
+  // ------------------------------------
+  // inserting to table
+  let datastore = app.datastore();
+  let tablePromise = datastore.getTableDetails("UserDetails");
+  let table = datastore.table("UserDetails");
+  let columnPromise = table.getColumnDetails("f_name");
+  columnPromise.then((column) => {
+    console.log(column);
+  });
+  // registerPromise
+  //   .then((userDetails) => {
+  //     console.log("userDetails : ", userDetails);
+  //     //Returns a promise
+  //     res.send(userDetails);
+  //   })
+  //   .catch((err) => {
+  //     console.log("error : ", err);
+  //     res.status(404).send(err);
+  //   });
+  //---------------------------------
+  res.send("HI");
 });
 
 module.exports = router;

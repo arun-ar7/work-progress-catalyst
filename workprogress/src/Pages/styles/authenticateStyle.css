@@ -1,0 +1,22 @@
+.authentication-containers{
+    height: 90vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupform-container{
+    text-align: center;
+}
+
+.signupform-inputs{
+    display: block;
+    width: 15rem;
+    margin: 5px;
+    padding: 5px;
+}
+
+.login{
+    display: none;
+}
