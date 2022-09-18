@@ -36,14 +36,13 @@ const Login = () => {
   async function doLogin() {
     console.log("loggin in");
     let payload = {
-      firstname: f_name.current,
-      lastname: l_name.current,
       email: email.current,
       password: password.current,
     };
     try {
-      let res = await axios.get("/server/workpackage/user/login", payload);
+      let res = await axios.post("/server/workpackage/user/login", payload);
       setUserData(res);
+      console.log(res);
       setIsLoggedIn(true);
     } catch (error) {
       toast.error("Try again.....");
