@@ -8,35 +8,23 @@ var signupConfig = {
   zaid: 50010564402,
 };
 
-// var userConfig = {
-//   last_name: "Boyle",
-//   email_id: "p.boyle@zylker.com",
-//   role_id: "1733000000008016",
-// };
-
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   const { error } = LoginValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   var app = catalyst.initialize(req);
-  let userManagement = app.userManagement();
-  let registerPromise = userManagement.registerUser(signupConfig, {
-    first_name: req.body.firstname,
-    last_name: req.body.lastname,
-    email_id: req.body.email,
-    password: req.body.password,
-    role_id: "1733000000008016",
-  }); //Pass the JSON configration to the method
+  //--------------------------
+  let query = `SELECT f_name, l_name, userId, email, password FROM UserDetails where email='${req.body.email}'`;
 
-  registerPromise
-    .then((userDetails) => {
-      console.log("userDetails : ", userDetails);
-      //Returns a promise
-      res.send(userDetails);
-    })
-    .catch((err) => {
-      console.log("error : ", err);
-      res.status(404).send(err);
-    });
+  let zcql = app.zcql();
+  let zcqlPromise = zcql.executeZCQLQuery(query);
+  zcqlPromise.then((queryResult) => {
+    if (queryResult[0].UserDetails.password === req.body.password) {
+      queryResult[0].UserDetails.password = undefined;
+      res.send(queryResult[0]);
+    } else {
+      res.status(403).send("LoginFailed");
+    }
+  });
 });
 
 module.exports = router;

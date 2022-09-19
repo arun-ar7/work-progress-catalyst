@@ -2,6 +2,13 @@ const express = require("express");
 const app = express();
 var catalyst = require("zcatalyst-sdk-node");
 const signup = require("./routes/signup/signup");
+const login = require("./routes/login/login");
+const getLeadTeams = require("./routes/team/getLeadTeams");
+const getMemTeams = require("./routes/team/getMemTeams");
+const getCompleteTeam = require("./routes/details/completeTeam");
+const getAllTeams = require("./routes/team/getAllTeams");
+const getUserDetails = require("./routes/details/userDetails");
+const getTeamMembers = require("./routes/details/teamMembers");
 
 app.use(express.json());
 
@@ -12,24 +19,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user/signup", signup);
-
-app.post("/adduser", (req, res) => {
-  // var app = catalyst.initialize(req);
-  // let userManagement = app.userManagement();
-  // let registerPromise = userManagement.registerUser(signupConfig, {
-  //   first_name: req.body.firstname,
-  //   last_name: req.body.lastname,
-  //   email_id: req.body.email,
-  //   role_id: "1733000000008016",
-  // }); //Pass the JSON configration to the method
-  // registerPromise
-  //   .then((userDetails) => {
-  //     //Returns a promise
-  //     res.send(userDetails);
-  //   })
-  //   .catch((err) => {
-  //     res.send(err.message);
-  //   });
-});
+app.use("/user/login", login);
+app.use("/getLeadTeams", getLeadTeams);
+app.use("/getMembTeams", getMemTeams);
+app.use("/getCompleteTeam", getCompleteTeam);
+app.use("/getAllTeams", getAllTeams);
+app.use("/getTeamMembers", getTeamMembers);
+app.use("/getUser", getUserDetails);
 
 module.exports = app;
