@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
+import Header from "../Components/Common/Header";
+import Footer from "../Components/Common/Footer";
 
 const IndividualTasks = ({ team }) => {
   // const [currentModal, setCurrentModal] = useState({});
@@ -26,16 +28,20 @@ const IndividualTasks = ({ team }) => {
   }, [null]);
   return (
     <div>
-      {teamDetails.map((element, index) => {
-        return (
-          <div key={index}>
-            {element.TeamsAndTasks.TeamName}
-            <br />
-            <button onClick={() => {}}>Open Modal</button>
-            {element.TeamsAndTasks.email}
-          </div>
-        );
-      })}
+      <Header />
+      <div>
+        {teamDetails.map((element, index) => {
+          return (
+            <div key={index}>
+              {element.TeamsAndTasks.TeamName}
+              <br />
+              <button onClick={() => {}}>Open Modal</button>
+              {element.TeamsAndTasks.email}
+            </div>
+          );
+        })}
+      </div>
+      <Footer />
     </div>
   );
 };

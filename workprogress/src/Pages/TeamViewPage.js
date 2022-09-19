@@ -2,32 +2,33 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
+import Header from "../Components/Common/Header";
+import Footer from "../Components/Common/Footer";
 
 const TeamViewPage = ({ team }) => {
-  // const [currentModal, setCurrentModal] = useState({});
-  const [userModal, setUserModal] = useState("");
-  console.log("team name : ", team);
-  //for modals -------------
-
-  // -----------------------
   const [teamDetails, setTeamDetails] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        let res = await axios.post("/server/workpackage/getTeamMembers", {
-          teamName: team,
-        });
-        setTeamDetails(res.data);
-        console.log(res);
-      } catch (error) {
-        toast.error("Error in fetching teams");
+  useEffect(
+    (team) => {
+      async function getData() {
+        try {
+          let res = await axios.post("/server/workpackage/getTeamMembers", {
+            teamName: team,
+          });
+
+          setTeamDetails(res.data);
+          console.log(res);
+        } catch (error) {
+          toast.error("Error in fetching teams");
+        }
       }
-    }
-    getData();
-  }, [null]);
+      getData();
+    },
+    [null]
+  );
   return (
     <div>
-      {/* {teamDetails.map((element, index) => {
+      <Header />
+      {teamDetails.map((element, index) => {
         return (
           <div key={index}>
             {element.TeamsAndTasks.TeamName}
@@ -36,7 +37,8 @@ const TeamViewPage = ({ team }) => {
             {element.TeamsAndTasks.email}
           </div>
         );
-      })} */}
+      })}
+      <Footer />
     </div>
   );
 };
