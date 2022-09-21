@@ -1,3 +1,6 @@
+
+
+
 .authentication-containers{
     height: 90vh;
     display: flex;
@@ -9,12 +12,22 @@
 .signupform-container{
     text-align: center;
 }
+.AuthHeaders{
+    border: none;
+    font-size: 1.7em;
+    background-color: #f4f4f4;
+    margin-bottom: 3px;
+}
 
 .signupform-inputs{
     display: block;
     width: 15rem;
     margin: 5px;
     padding: 5px;
+    background-color: #CAEBF2;
+    border: none;
+    padding: 10px;
+    margin: 15px;
 }
 
 .login{

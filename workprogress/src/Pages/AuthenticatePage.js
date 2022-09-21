@@ -6,11 +6,13 @@ import Footer from "../Components/Common/Footer";
 
 const AuthenticatePage = () => {
   return (
-    <div className="authentication-containers">
+    <>
       <Header />
-      <Login />
+      <div className="authentication-containers">
+        <Login />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

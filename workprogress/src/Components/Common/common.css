@@ -1,0 +1,11 @@
+.Header{
+    display: flex;
+    justify-content: space-between;   
+}
+.headCenter{
+    font-size: 2rem;
+    font-family:"Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+}
+.colorRed{
+    color: red;
+}

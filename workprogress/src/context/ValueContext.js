@@ -3,10 +3,10 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const ValueContext = createContext();
 
 export const ValueProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userEmail, setUserEmail] = useState("arunsmart1202@gmail.com");
-  const [role, setRole] = useState("Leader");
-  const [fName, setFName] = useState("Arun");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [fName, setFName] = useState("");
   useEffect(() => {}, []);
 
   return (

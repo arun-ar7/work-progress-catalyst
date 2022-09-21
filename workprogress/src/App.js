@@ -20,7 +20,6 @@ function App() {
       try {
         let res = await axios.post("/server/workpackage/getAllTeams");
         setTeamsList(res.data);
-        console.log("result : ", res);
       } catch (error) {
         toast.error("Error in fetching teams");
       }
@@ -36,7 +35,6 @@ function App() {
             <Route path="/app/" element={<HomePage />} />
           </Route>
           {teamsList.map((user, index) => {
-            console.log(user.TeamnamesAndMembers.TeamName);
             return (
               <Route
                 path={`/app/${user.TeamnamesAndMembers.TeamName}`}

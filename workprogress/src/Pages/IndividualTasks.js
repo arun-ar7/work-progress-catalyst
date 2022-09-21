@@ -19,7 +19,6 @@ const IndividualTasks = ({ team }) => {
           teamName: team,
         });
         setTeamDetails(res.data);
-        console.log(res);
       } catch (error) {
         toast.error("Error in fetching teams");
       }

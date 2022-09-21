@@ -3,13 +3,15 @@ import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useValues } from "../../context/ValueContext";
+import { useNavigate } from "react-router-dom";
 
 const axios = require("axios");
 
 const Login = () => {
-  const { isLoggedIn, setIsLoggedIn } = useValues();
+  const { isLoggedIn, setIsLoggedIn, setUserEmail, setFName } = useValues();
   const [userData, setUserData] = useState({});
   const [showLogin, setShowLogin] = useState(true);
+  const navigate = useNavigate();
 
   const f_name = useRef("");
   const l_name = useRef("");
@@ -17,7 +19,6 @@ const Login = () => {
   const password = useRef("");
 
   async function doPostRequest() {
-    console.log("executing");
     let payload = {
       firstname: f_name.current,
       lastname: l_name.current,
@@ -27,14 +28,17 @@ const Login = () => {
     try {
       let res = await axios.post("/server/workpackage/user/signup", payload);
       setUserData(res);
+      console.log(res);
+      setFName(res.data.row.f_name);
+      setUserEmail(res.data.row.email);
       setIsLoggedIn(true);
+      navigate("/app/");
     } catch (error) {
       toast.error("Try again.....");
       setIsLoggedIn(false);
     }
   }
   async function doLogin() {
-    console.log("loggin in");
     let payload = {
       email: email.current,
       password: password.current,
@@ -42,8 +46,8 @@ const Login = () => {
     try {
       let res = await axios.post("/server/workpackage/user/login", payload);
       setUserData(res);
-      console.log(res);
       setIsLoggedIn(true);
+      navigate("/app/");
     } catch (error) {
       toast.error("Try again.....");
       setIsLoggedIn(false);
@@ -53,11 +57,13 @@ const Login = () => {
     <div className="authFormContainer">
       <div className="signupform-container">
         <button
+          className="AuthHeaders"
           onClick={() => {
             setShowLogin(!showLogin);
           }}
         >
-          {`${showLogin ? "SignUp" : "Login"}`}
+          <span className={`${showLogin ? "colorRed" : ""}`}>Login</span>/
+          <span className={`${!showLogin ? "colorRed" : ""}`}>SignUp</span>
         </button>
         <form method="post">
           <input
@@ -101,12 +107,24 @@ const Login = () => {
             type="button"
             value="Signup"
             onClick={doPostRequest}
+            style={{
+              width: "120px",
+              backgroundColor: "red",
+              border: "none",
+              color: " white",
+            }}
           />
           <input
             className={`signupform-inputs ${showLogin ? "" : "login"}`}
             type="button"
             value="Login"
             onClick={doLogin}
+            style={{
+              width: "120px",
+              backgroundColor: "red",
+              border: "none",
+              color: " white",
+            }}
           />
         </form>
         <div id="forgotpwd"></div>

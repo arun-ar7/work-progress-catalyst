@@ -6,9 +6,15 @@ const Home = () => {
   const { fName, userEmail, role } = useValues();
   return (
     <>
-      <h3>{fName}</h3>
-      <h4>{userEmail}</h4>
-      <h5>{role}</h5>
+      <div className="HomeGreetings">
+        <h3 className="FirstNameDisplay">
+          Welcome, <span style={{ color: "red" }}>{fName}</span>
+        </h3>
+        <h3 className="EmailDisplay">
+          <span style={{ color: "red" }}>Email : </span>
+          {userEmail}
+        </h3>
+      </div>
       <TeamAsLeader />
     </>
   );
